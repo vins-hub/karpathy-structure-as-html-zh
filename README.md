@@ -16,17 +16,41 @@
 
 ## 為什麼這條看似簡單的提示這麼重要
 
-Karpathy 的核心觀察：
+> ⚠️ **2026-05-19 自我驗證更新**：先前版本引用了「Stone Age」這句話作為 Karpathy 原話，但實際上那是 [quasa.io](https://quasa.io/media/enough-with-the-walls-of-text-andrej-karpathy-s-simple-lifehack-just-ask-ai-for-html) 的 paraphrase。
+> **詳細比對**：[SELF-VALIDATION.md](SELF-VALIDATION.md)
 
-> **AI 的輸入端（multimodal、語音、視覺、影片）正在飛速進化，但輸出端還停留在石器時代——大多是純文字或輕度格式化的 markdown。**
+### Karpathy 的真正論述：Audio → Input, Vision → Output
 
-這個 mismatch（輸入升維 / 輸出降維）是當前 LLM 應用最大的浪費：模型內部其實能生成豐富的結構化資訊（表格、圖示、互動元素、樣式分區），但我們強迫它輸出 plain text，再把這個 plain text 塞回 textarea / chat bubble。
-
-> 引用 [Karpathy via quasa.io](https://quasa.io/media/enough-with-the-walls-of-text-andrej-karpathy-s-simple-lifehack-just-ask-ai-for-html)：
+> *"audio is the human-preferred input to AIs but vision (images/animations/video) is the preferred output from them. Around a ~third of our brains are a massively parallel processor dedicated to vision, it is the 10-lane superhighway of information into brain."*
 > 
-> *"While AI input methods are advancing rapidly, **Output** is still stuck in the Stone Age — mostly plain text or lightly formatted Markdown."*
+> —— Karpathy 原推文（2026-05-12）
 
-**HTML 是現成的、無門檻的、跨平台的「現代輸出層」**：
+**人類對 AI 的 I/O 偏好是不對稱的**：
+
+| 方向 | 人類偏好 | 為什麼 |
+|---|---|---|
+| **Input → AI**（你給 AI） | **Audio**（語音） | 講話比打字快，思考流暢 |
+| **AI → Output**（AI 給你） | **Vision**（視覺：圖像 / 動畫 / 影片） | 大腦 1/3 是視覺處理器，10 線道資訊高速公路 |
+
+**HTML 不是孤立技巧，是「vision-as-AI-output」這個大論述在 2026 的具體實踐**。
+
+### 4 級演進階梯（Karpathy 原文）
+
+```
+1) raw text                    （難讀、費力）
+2) markdown                    （現行 default）
+3) HTML                        ← 我們在這裡
+   ↓ ...
+n) interactive neural videos / simulations  
+   （由 diffusion neural net 直接生成的互動影片）
+```
+
+> *"the extrapolation (though the technology doesn't exist just yet) ends in some kind of interactive videos generated directly by a diffusion neural net."*
+
+HTML **不是終點，是第一步**。在 Neuralink-esque BCI 之前，這是目前能做的最大跳躍。
+
+### 為何 HTML 是當前最佳選擇
+
 - 排版、顏色、字型、間距全套樣式系統
 - Tables、lists、accordions、details/summary 可摺疊區塊
 - 暗色模式自動切換（`prefers-color-scheme`）
@@ -34,6 +58,10 @@ Karpathy 的核心觀察：
 - 連 SVG / Canvas / 簡易互動（`<details>`、`onclick`）都不用加 build step
 
 **你早就有了瀏覽器**——這是地球上裝機率最高的軟體——卻把它閒置，繼續看 markdown 純文字。
+
+### 致謝 Thariq：方法的原始長文
+
+Karpathy 這條推文實際上是 **quote tweet 回應 [@trq212 Thariq 在 May 9 寫的文章](https://x.com/trq212/status/...)「Using Claude Code: The Unreasonable Effectiveness of HTML」**。Thariq（Anthropic Claude Code team）才是最早系統性論述「**markdown 是 agent 與人類溝通的 dominant format，但 HTML 可以做得更好**」的人。Karpathy 推廣了這個方法 + 補上 vision-as-output 的理論基礎。
 
 ---
 
@@ -80,6 +108,16 @@ Karpathy 工作流：
 | [06. 進階：互動、可下載、分享](content/06-advanced-interactivity.md) | 從靜態 HTML 升級到 mini app | 想極致化的人 |
 | [07. 跟 12-factor agents 的關聯](content/07-relation-to-12-factor.md) | 為何這條跟 Context Engineering 同源 | 體系派 |
 | [Appendix: HTML CSS 速查](content/appendix-html-css-cheatsheet.md) | 即查即用的常用 pattern | 工具書 |
+
+---
+
+## Karpathy 的 TLDR 金句
+
+> **「The input/output mind meld between humans and AIs is ongoing and there is a lot of work to do and significant progress to be made, way before jumping all the way into neuralink-esque BCIs and all that. For what's worth exploring at the current stage, hot tip try ask for HTML.」**
+>
+> 「人機 I/O 心靈融合是個持續過程，在跳到 Neuralink-style BCI 之前還有很多進步空間。**就目前可以探索的階段，hot tip：試試請 AI 給你 HTML**。」
+
+順帶一提，Karpathy 也提到 **slideshow** 是另一個有效的 trick（同樣 prompt 結尾要求 LLM 用 slideshow 形式呈現）。這份指南聚焦在 HTML，但 slideshow 是延伸應用。
 
 ---
 

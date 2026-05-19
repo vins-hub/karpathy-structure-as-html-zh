@@ -7,7 +7,7 @@ COMBINED=/tmp/karpathy-html-combined.md
 
 {
   cat README.md; echo -e "\n\n\\pagebreak\n\n"
-  for f in content/01-the-output-bottleneck.md \
+  for f in content/00-original-tweet.md content/01-the-output-bottleneck.md \
            content/02-the-html-method.md \
            content/03-use-cases.md \
            content/04-template-library.md \
